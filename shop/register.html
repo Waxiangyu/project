@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<h1 align="center">用户注册</h1>
+<form  method="post" id="myForm">
+    <table border="1" cellspacing="0" cellpadding="5" align="center" width="320">
+        <tr>
+            <td>用户名：</td>
+            <td><input type="text" name="username" required ></td>
+        </tr>
+        <tr>
+            <td>密码：</td>
+            <td><input type="password" name="password" required></td>
+        </tr>
+        <tr>
+            <td>重复密码：</td>
+            <td><input type="password" name="pass" required></td>
+        </tr>
+        <tr>
+            <td>年龄：</td>
+            <td><input type="number" name="age"></td>
+        </tr>
+        <tr>
+            <td>性别：</td>
+            <td><input type="radio" name="gender" value="男">男<input type="radio" name="gender" value="女">女</td>
+        </tr>
+
+        <tr align="center">
+            <td colspan="2"><input type="submit" name="submit" value="提交">
+                <input type="reset" value="重置"></td>
+        </tr>
+    </table>
+</form>
+<script src="js/ajax.js"></script>
+<script>
+    var form=document.getElementById("myForm");
+    var input=form.username
+    var method=form.method
+    //var span=document.getElementById("span")
+    //console.log(input)
+    input.onblur=function(){
+        ajax(method,'api/register.php?action=user',{username:this.value},function(xhr){
+            if(xhr.responseText=="no" && xhr.statusText=="OK"){
+                alert("用户名不可用")
+            }
+        })
+    }
+    var pass=form.pass
+    pass.onblur=function() {
+        if (this.value != form.password.value) {
+            alert("密码输入不一致")
+        }
+    }
+
+    form.onsubmit=function(){
+           // alert(1)
+        var data={
+            username:form.username.value,
+            password:form.password.value,
+            sex:form.gender.value,
+            age:form.age.value
+        }
+        console.log(data)
+
+        ajax(method,'api/register.php?action=submit',data,function(xhr){
+            if(xhr.responseText=="success" && xhr.statusText=="OK"){
+                alert("注册成功")
+                window.location.href='login.html'
+            }else {
+                alert("注册失败")
+//                window.location.href='register.html'
+            }
+        })
+        return false;
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+@charset "utf-8";
+.product{
+    width: 70%;
+    float: left;
+}
+.product-item{
+    padding: 5px;
+    float: left;
+    width: 30.333%;
+    margin-right: 3%;
+    margin-bottom: 25px;
+    border: 1px solid red;
+    box-sizing: border-box;
+}
+.product-item img{
+    width: 100%;
+}
+.product-item span{
+    display: block;
+    margin-bottom: 10px;
+}
+.sales{
+    float: right;
+}
+.aside{
+    width: 30%;
+    float: left;
+}
+.aside dl{
+    margin: 20px 0;
+}
+.aside dl dt{
+    float: left;
+}
+.aside dl dd{
+    float: right;
+    margin-top: 20px;
+    margin-right: 20px;
+}
+.aside dl dt img{
+    width: 80px;
+    height: 80px;
+}
+.aside dl dd span{
+    display: block;
+    text-align: center;
+    font-family: "Microsoft YaHei";
+}
+.aside dl dd span:nth-of-type(2){
+    font-weight: bold;
+    margin-top: 5px;
+}
+
